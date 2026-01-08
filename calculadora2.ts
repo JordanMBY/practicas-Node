@@ -28,3 +28,13 @@ n1.forEach(numero => {
 });
 
 console.log("Números primos encontrados:", numerosPrimos);
+
+
+//mensaje de si es primo o no en un array
+n1.forEach(numero => {
+    if (esPrimo(numero)) {
+        console.log(numero + " es un número primo.");
+    } else {
+        console.log(numero + " no es un número primo.");
+    }
+});
