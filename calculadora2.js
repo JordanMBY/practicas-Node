@@ -2,7 +2,6 @@
 
 function multiplicarHasta(n) {
     if (n < 1) return null;
-    // Usamos BigInt para evitar overflow en factoriales moderados
     let prod = 1n;
     for (let i = 1; i <= n; i++) {
         prod *= BigInt(i);
@@ -28,8 +27,8 @@ function primosHasta(n) {
     return primos;
 }
 
+// Genera un array con cadenas que representan cada paso de la multiplicación
 function multiplicacionesPasoAPaso(n, limit = 200) {
-    // Genera un array con cadenas que representan cada paso de la multiplicación
     const pasos = [];
     let prod = 1n;
     for (let i = 1; i <= n; i++) {

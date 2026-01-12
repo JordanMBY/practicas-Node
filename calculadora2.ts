@@ -20,6 +20,7 @@ function esPrimo(n1: number): boolean {
     return true;
 }
 
+
 let numerosPrimos: number[] = [];
 n1.forEach(numero => {
     if (esPrimo(numero)) {
