@@ -1,28 +1,24 @@
-// serie de leibniz para calcular pi en typescript
+function calcularPiLeibniz(numTerminos: number): number {
+  let piAproximado = 0; // Inicializa la suma
+  let denominador = 1; // Inicia el denominador en 1
+  let signo = 1; // Inicia el signo en positivo
 
-function calcularPiTerminos(n: number): number {
-    let pi = 0;
-    for (let i = 0; i < n; i++) {
-        // Alterna signo: +, -, +, - ...
-        pi += (i % 2 === 0 ? 1 : -1) / (2 * i + 1);
-    }
-    return pi * 4;
+  // Itera según el número de términos deseado
+  for (let i = 0; i < numTerminos; i++) {
+    // Suma o resta el término actual
+    piAproximado += signo * (4 / denominador);
+    
+    // Prepara para la siguiente iteración
+    denominador += 2; // El denominador siempre es impar (1, 3, 5, ...)
+    signo *= -1;      // Alterna el signo (+, -, +, -, ...)
+  }
+
+  return piAproximado;
 }
 
-function sacarpi(): void {
-    const input = document.getElementById('numero') as HTMLInputElement | null;
-    const resultado = document.getElementById('resultado') as HTMLElement | null;
-    if (!input || !resultado) return;
+// Ejemplo de uso:
+const terminos = 10000; // Puedes ajustar esto para mayor o menor precisión
+const piCalculado = calcularPiLeibniz(terminos);
 
-    const n = input.valueAsNumber;
-    if (!Number.isFinite(n) || n < 1) {
-        resultado.textContent = 'Por favor ingrese un número de términos válido (>= 1).';
-        return;
-    }
-
-    const pi = calcularPiTerminos(Math.floor(n));
-    resultado.textContent = pi.toString();
-}
-
-// Hacerla accesible desde el HTML (onclick)
-;(window as any).sacarpi = sacarpi;
+console.log(`Aproximación de Pi con ${terminos} términos: ${piCalculado}`);
+console.log(`Valor de Math.PI: ${Math.PI}`);
